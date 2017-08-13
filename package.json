@@ -1,0 +1,42 @@
+{
+    "name": "typo3-typoscript",
+    "displayName": "TYPO3 TypoScript",
+    "description": "Syntax highlighting for TYPO3 TypoScript",
+    "version": "0.0.1",
+    "publisher": "benjaminkott",
+    "icon": "media/icon.jpg",
+    "engines": {
+        "vscode": "^1.15.0"
+    },
+    "license": "MIT",
+    "categories": [
+        "Languages"
+    ],
+    "keywords": [
+        "typoscript",
+        "typo3",
+        "template"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "typoscript",
+                "aliases": [
+                    "TypoScript",
+                    "typoscript"
+                ],
+                "extensions": [
+                    ".typoscript"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "typoscript",
+                "scopeName": "source.typoscript",
+                "path": "./syntaxes/typoscript.tmLanguage.json"
+            }
+        ]
+    }
+}
