@@ -2,7 +2,7 @@
     "name": "typo3-typoscript",
     "displayName": "TYPO3 TypoScript",
     "description": "Syntax highlighting for TYPO3 TypoScript",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "benjaminkott",
     "icon": "media/icon.jpg",
     "engines": {
