@@ -7,13 +7,13 @@
         },
         {
             "comment": "Everything after the equal sign",
-            "begin": "=",
+            "begin": "=\\s?",
             "captures": {
                 "0": {
                     "name": "keyword.operator"
                 }
             },
-            "end": "($)",
+            "end": "(?:\n|$)",
             "name": "string.interpolated.typoscript",
             "patterns": [
                 {
@@ -83,16 +83,20 @@
             ]
         },
         "constants": {
-            "patterns": [{
-                "name": "variable.other.typoscript",
-                "match": "{\\$.*}"
-            }]
+            "patterns": [
+                {
+                    "name": "variable.other.typoscript",
+                    "match": "{\\$.*}"
+                }
+            ]
         },
         "cobjects": {
-            "patterns": [{
-                "name": "support.class.cobject.typoscript",
-                "match": "(CASE|COA|COA_INT|CONTENT|EDITPANEL|FILE|FILES|FLUIDTEMPLATE|HMENU|IMAGE|IMG_RESOURCE|LOAD_REGISTER|RECORDS|RESTORE_REGISTER|SVG|TEMPLATE|TEXT|USER|USER_INT)\\b"
-            }]
+            "patterns": [
+                {
+                    "name": "support.class.cobject.typoscript",
+                    "match": "(CASE|COA|COA_INT|CONTENT|EDITPANEL|FILE|FILES|FLUIDTEMPLATE|HMENU|TMENU|IMAGE|IMG_RESOURCE|LOAD_REGISTER|RECORDS|RESTORE_REGISTER|SVG|TEMPLATE|TEXT|USER|USER_INT|PAGE)\\b(?:\n|$)"
+                }
+            ]
         }
     },
     "scopeName": "source.typoscript"
