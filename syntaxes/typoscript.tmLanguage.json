@@ -6,8 +6,11 @@
             "include": "#comments"
         },
         {
+            "include": "#includes"
+        },
+        {
             "comment": "Everything after the equal sign",
-            "begin": "=\\s?",
+            "begin": "(=)(\\s?)",
             "captures": {
                 "0": {
                     "name": "keyword.operator"
@@ -21,6 +24,12 @@
                 },
                 {
                     "include": "#constants"
+                },
+                {
+                    "include": "#interpolation"
+                },
+                {
+                    "include": "#strings"
                 }
             ]
         }
@@ -95,6 +104,100 @@
                 {
                     "name": "support.class.cobject.typoscript",
                     "match": "(CASE|COA|COA_INT|CONTENT|EDITPANEL|FILE|FILES|FLUIDTEMPLATE|HMENU|TMENU|IMAGE|IMG_RESOURCE|LOAD_REGISTER|RECORDS|RESTORE_REGISTER|SVG|TEMPLATE|TEXT|USER|USER_INT|PAGE)\\b(?:\n|$)"
+                }
+            ]
+        },
+        "interpolation": {
+            "patterns": [
+                {
+                    "match": "\\\\[0-7]{1,3}",
+                    "name": "constant.numeric.octal.typoscript"
+                },
+                {
+                    "match": "\\\\x[0-9A-Fa-f]{1,2}",
+                    "name": "constant.numeric.hex.typoscript"
+                },
+                {
+                    "match": "\\\\[enrt\\\\\\$\\\"]",
+                    "name": "constant.character.escape.typoscript"
+                }
+            ]
+        },
+        "string-double-quoted": {
+            "begin": "\"",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.begin.typoscript"
+                }
+            },
+            "end": "\"",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.typoscript"
+                }
+            },
+            "name": "string.quoted.double.typoscript",
+            "patterns": [
+                {
+                    "include": "#interpolation"
+                }
+            ]
+        },
+        "string-single-quoted": {
+            "begin": "'",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.begin.typoscript"
+                }
+            },
+            "end": "'",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.typoscript"
+                }
+            },
+            "name": "string.quoted.single.typoscript",
+            "patterns": [
+                {
+                    "match": "\\\\[\\\\']",
+                    "name": "constant.character.escape.typoscript"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "include": "#string-double-quoted"
+                },
+                {
+                    "include": "#string-single-quoted"
+                }
+            ]
+        },
+        "includes": {
+            "patterns": [
+                {
+                    "begin": "<INCLUDE_TYPOSCRIPT:",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "support.function.typoscript"
+                        }
+                    },
+                    "end": ">",
+                    "endCaptures": {
+                        "0": {
+                            "name": "support.function.typoscript"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "name": "variable.parameter.typoscript",
+                            "match": "(source|extensions|condition)(=)"
+                        },
+                        {
+                            "include": "#strings"
+                        }
+                    ]
                 }
             ]
         }
