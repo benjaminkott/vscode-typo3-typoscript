@@ -9,6 +9,9 @@
             "include": "#includes"
         },
         {
+            "include": "#conditions"
+        },
+        {
             "comment": "Everything after the equal sign",
             "begin": "(=)(\\s?)",
             "captures": {
@@ -96,6 +99,14 @@
                 {
                     "name": "variable.other.typoscript",
                     "match": "{\\$.*}"
+                }
+            ]
+        },
+        "conditions": {
+            "patterns": [
+                {
+                    "name": "variable.other.typoscript",
+                    "match": "\\[(language|IP|hostname|applicationContext|hour|minute|month|year|dayofweek|dayofmonth|dayofyear|usergroup|loginUser|page|treeLevel|PIDinRootline|compatVersion|globalVar|globalString|global|userFunc|end|((?:\\{1,2}\\w+|\\w+\\\\{1,2})(?:\\w+\\\\{0,2})+)).*\\]"
                 }
             ]
         },
