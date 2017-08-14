@@ -9,6 +9,14 @@
         "vscode": "^1.15.0"
     },
     "license": "MIT",
+    "bugs": {
+		"url": "https://github.com/benjaminkott/vscode-typo3-typoscript/issues"
+	},
+	"homepage": "https://github.com/benjaminkott/vscode-typo3-typoscript",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/benjaminkott/vscode-typo3-typoscript.git"
+	},
     "categories": [
         "Languages"
     ],
