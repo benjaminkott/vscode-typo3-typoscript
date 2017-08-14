@@ -28,6 +28,13 @@
                 "extensions": [
                     ".typoscript"
                 ],
+                "filenames": [
+                    "constants.txt",
+                    "ext_conf_template.txt",
+                    "ext_typoscript_setup.txt",
+                    "ext_typoscript_constants.txt",
+                    "setup.txt"
+                ],
                 "configuration": "./language-configuration.json"
             }
         ],
