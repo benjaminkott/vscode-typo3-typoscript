@@ -2,7 +2,7 @@
     "name": "typo3-typoscript",
     "displayName": "TYPO3 TypoScript",
     "description": "Syntax highlighting for TYPO3 TypoScript",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "benjaminkott",
     "icon": "media/icon.jpg",
     "engines": {
@@ -10,13 +10,13 @@
     },
     "license": "MIT",
     "bugs": {
-		"url": "https://github.com/benjaminkott/vscode-typo3-typoscript/issues"
-	},
-	"homepage": "https://github.com/benjaminkott/vscode-typo3-typoscript",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/benjaminkott/vscode-typo3-typoscript.git"
-	},
+        "url": "https://github.com/benjaminkott/vscode-typo3-typoscript/issues"
+    },
+    "homepage": "https://github.com/benjaminkott/vscode-typo3-typoscript",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/benjaminkott/vscode-typo3-typoscript.git"
+    },
     "categories": [
         "Languages"
     ],
