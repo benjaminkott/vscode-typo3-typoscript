@@ -44,6 +44,17 @@
                     "setup.txt"
                 ],
                 "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "tsconfig",
+                "aliases": [
+                    "TsConfig",
+                    "tsconfig"
+                ],
+                "extensions": [
+                    ".tsconfig"
+                ],
+                "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
@@ -51,6 +62,11 @@
                 "language": "typoscript",
                 "scopeName": "source.typoscript",
                 "path": "./syntaxes/typoscript.tmLanguage.json"
+            },
+            {
+                "language": "tsconfig",
+                "scopeName": "source.tsconfig",
+                "path": "./syntaxes/tsconfig.tmLanguage.json"
             }
         ]
     }
