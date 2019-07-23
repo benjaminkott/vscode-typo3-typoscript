@@ -185,30 +185,54 @@
                 }
             ]
         },
+        "include_at_rule": {
+            "begin": "\\s*((@)import\\b)\\s*",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.include.typoscript"
+                },
+                "2": {
+                    "name": "punctuation.definition.keyword.typoscript"
+                }
+            },
+            "end": "\\s",
+            "name": "meta.include.typoscript",
+            "patterns": [
+                {
+                    "include": "#strings"
+                }
+            ]
+        },
+        "include_tag_rule": {
+            "begin": "<INCLUDE_TYPOSCRIPT:",
+            "beginCaptures": {
+                "0": {
+                    "name": "support.function.typoscript"
+                }
+            },
+            "end": ">",
+            "endCaptures": {
+                "0": {
+                    "name": "support.function.typoscript"
+                }
+            },
+            "patterns": [
+                {
+                    "name": "variable.parameter.typoscript",
+                    "match": "(source|extensions|condition)(=)"
+                },
+                {
+                    "include": "#strings"
+                }
+            ]
+        },
         "includes": {
             "patterns": [
                 {
-                    "begin": "<INCLUDE_TYPOSCRIPT:",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "support.function.typoscript"
-                        }
-                    },
-                    "end": ">",
-                    "endCaptures": {
-                        "0": {
-                            "name": "support.function.typoscript"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "name": "variable.parameter.typoscript",
-                            "match": "(source|extensions|condition)(=)"
-                        },
-                        {
-                            "include": "#strings"
-                        }
-                    ]
+                    "include": "#include_at_rule"
+                },
+                {
+                    "include": "#include_tag_rule"
                 }
             ]
         }

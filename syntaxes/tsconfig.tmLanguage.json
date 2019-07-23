@@ -185,30 +185,54 @@
                 }
             ]
         },
+        "include_at_rule": {
+            "begin": "\\s*((@)import\\b)\\s*",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.include.tsconfig"
+                },
+                "2": {
+                    "name": "punctuation.definition.keyword.tsconfig"
+                }
+            },
+            "end": "\\s",
+            "name": "meta.include.tsconfig",
+            "patterns": [
+                {
+                    "include": "#strings"
+                }
+            ]
+        },
+        "include_tag_rule": {
+            "begin": "<INCLUDE_TYPOSCRIPT:",
+            "beginCaptures": {
+                "0": {
+                    "name": "support.function.tsconfig"
+                }
+            },
+            "end": ">",
+            "endCaptures": {
+                "0": {
+                    "name": "support.function.tsconfig"
+                }
+            },
+            "patterns": [
+                {
+                    "name": "variable.parameter.tsconfig",
+                    "match": "(source|extensions|condition)(=)"
+                },
+                {
+                    "include": "#strings"
+                }
+            ]
+        },
         "includes": {
             "patterns": [
                 {
-                    "begin": "<INCLUDE_tsconfig:",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "support.function.tsconfig"
-                        }
-                    },
-                    "end": ">",
-                    "endCaptures": {
-                        "0": {
-                            "name": "support.function.tsconfig"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "name": "variable.parameter.tsconfig",
-                            "match": "(source|extensions|condition)(=)"
-                        },
-                        {
-                            "include": "#strings"
-                        }
-                    ]
+                    "include": "#include_at_rule"
+                },
+                {
+                    "include": "#include_tag_rule"
                 }
             ]
         }
