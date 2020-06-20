@@ -103,10 +103,75 @@
             ]
         },
         "conditions": {
+            "begin": "\\[",
+            "end": "\\]",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.paren.open"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.paren.close"
+                }
+            },
             "patterns": [
                 {
-                    "name": "variable.other.tsconfig",
-                    "match": "\\[(adminUser|language|IP|hostname|applicationContext|hour|minute|month|year|dayofweek|dayofmonth|dayofyear|usergroup|loginUser|page|treeLevel|PIDinRootline|PIDupinRootline|compatVersion|globalVar|globalString|global|userFunc|end|((?:\\{1,2}\\w+|\\w+\\\\{1,2})(?:\\w+\\\\{0,2})+)).*\\]"
+                    "match": "(adminUser|language|IP|hostname|applicationContext|hour|minute|month|year|dayofweek|dayofmonth|dayofyear|usergroup|loginUser|page|treeLevel|PIDinRootline|PIDupinRootline|compatVersion|globalVar|globalString|global|userFunc|end|((?:\\{1,2}\\w+|\\w+\\\\{1,2})(?:\\w+\\\\{0,2})+))(?:\\s+=\\s+([^\\]]*))?",
+                    "captures": {
+                        "0": {
+                            "name": "variable.other.tsconfig"
+                        },
+                        "3": {
+                            "name": "string.unquoted.tsconfig"
+                        }
+                    }
+                },
+                {
+                    "include": "#condition-expression"
+                }
+            ]
+        },
+        "condition-expression": {
+            "patterns": [
+                {
+                    "match": "[0-9]+(?:\\.[0-9]+)?([Ee][\\+\\-][0-9]+)?",
+                    "name": "constant.numeric.other.symfonyexpression"
+                },
+                {
+                    "begin": "[\\(\\[\\{]",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.paren.open"
+                        }
+                    },
+                    "end": "[\\)\\]\\}]",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.paren.close"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#condition-expression"
+                        }
+                    ]
+                },
+                {
+                    "match": "\"([^\"\\\\]*(?:\\\\.[^\"\\\\]*)*)\"|'([^'\\\\]*(?:\\\\.[^'\\\\]*)*)'",
+                    "name": "string.quoted.other.symfonyexpression"
+                },
+                {
+                    "match": "(?<=^|[\\s(])not in(?=[\\s(])|\\!\\=\\=|(?<=^|[\\s(])not(?=[\\s(])|(?<=^|[\\s(])and(?=[\\s(])|\\=\\=\\=|\\>\\=|(?<=^|[\\s(])or(?=[\\s(])|\\<\\=|\\*\\*|\\.\\.|(?<=^|[\\s(])in(?=[\\s(])|&&|\\|\\||(?<=^|[\\s(])matches|\\=\\=|\\!\\=|\\*|~|%|\\\/|\\>|\\||\\!|\\^|&|\\+|\\<|\\-",
+                    "name": "keyword.operator.other.symfonyexpression"
+                },
+                {
+                    "match": "[\\.,\\?\\:]",
+                    "name": "punctuation.other.symfonyexpression"
+                },
+                {
+                    "match": "[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*",
+                    "name": "variable.other.symfonyexpression"
                 }
             ]
         },
